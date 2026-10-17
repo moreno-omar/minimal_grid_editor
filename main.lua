@@ -26,11 +26,13 @@ function love.mousepressed(x, y, button)
         end
     elseif button == 2 then -- Right click prints full table to console
 		local f = assert(io.open("bullet_pattern.txt", "w"))
+		f:write("local bullets = { \n")
         print("--- Stored Coordinates ---")
         for i, pt in ipairs(points) do
             -- print(string.format("[%d] = { x = %d, y = %d }", i, pt.x, pt.y))
-			f:write(string.format("{ %d , %d }", pt.x, pt.y))
+			f:write(string.format("{ %d , %d },\n", pt.x, pt.y))
         end
+		f:write("}")
     end
 end
 
